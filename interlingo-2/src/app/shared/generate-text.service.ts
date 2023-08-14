@@ -18,7 +18,7 @@ export class GenerateTextService {
   selectedGenText: GenText;
   readonly baseURL = 'https://api.openai.com/v1/completions';
   
-  postStory(gentext: GenText){
+  postgenText(gentext: GenText){
     const headers= new HttpHeaders()
   .set('content-type', 'application/json')
   .set('Authorization', apiKey);

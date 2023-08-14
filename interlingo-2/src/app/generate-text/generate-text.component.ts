@@ -18,15 +18,15 @@ export class GenerateTextComponent {
 
 
 
-    storyLevel: string = "";
-    storyStyle: string = "";
-    storyTopic: string = "";
-    storyLanguage: string = "";
+    genTextLevel: string = "";
+    genTextStyle: string = "";
+    genTextTopic: string = "";
+    genTextLanguage: string = "";
     translationLanguage: string = "";
     newText: any;
     generatedText: any;
-    translatedStory: any;
-    storyLength: number = 0;
+    translatedgenText: any;
+    genTextLength: number = 0;
     newConversation: string = "";
     translatedConversation: any;
     isConversationReady =  false;
@@ -50,7 +50,7 @@ export class GenerateTextComponent {
       // Construct the request body
       const body = {
         model: "text-davinci-003",
-        prompt: "Make a " + this.toolbarService.selectedLevel + " level " + this.storyStyle + " about " + this.storyTopic + " in " + this.toolbarService.selectedLanguage + " language, and only of " + this.storyLength + " sentences.",
+        prompt: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + " in " + this.toolbarService.selectedLanguage + " language, and only of " + this.genTextLength + " sentences.",
         temperature: 1,
         max_tokens: 150
       };
@@ -58,7 +58,7 @@ export class GenerateTextComponent {
       // Make the post request to the ChatGPT API
       
       this.generateButtonPressed = true;
-      this.generateTextService.postStory(body).subscribe((res) => {
+      this.generateTextService.postgenText(body).subscribe((res) => {
         
         console.log(body);
         console.log(res);
@@ -67,17 +67,16 @@ export class GenerateTextComponent {
         console.log(this.generatedText);
         this.isTranslationReady = true;
         this.generateButtonPressed = false;
-        // this.story = this.generatedStory;
+        // this.genText = this.generatedgenText;
       }, error => {
         this.isTranslationReady = false;
         this.generateButtonPressed = false;
       });
     }
 
-    genTextAgain() {
-      // this.newText = false;
-      this.isTranslationReady = false;
+    genTextAgain(){
       this.newText = false;
+      this.isTranslationReady = false;
     }
   
     makeTranslation() {
@@ -90,10 +89,10 @@ export class GenerateTextComponent {
       };
   
       // Make the post request to the ChatGPT API
-      this.generateTextService.postStory(body).subscribe((res) => {
+      this.generateTextService.postgenText(body).subscribe((res) => {
         console.log(body);
         console.log(res);
-        this.translatedStory = res;
+        this.translatedgenText = res;
       });
     }
   
@@ -101,19 +100,19 @@ export class GenerateTextComponent {
       // Construct the request body
       const body = {
         model: "text-davinci-003",
-        prompt: "Make a " + this.storyLevel + " conversation about the following: " + this.generatedText + ": in " + this.storyLanguage,
+        prompt: "Make a " + this.genTextLevel + " conversation about the following: " + this.generatedText + ": in " + this.genTextLanguage,
         temperature: 1,
         max_tokens: 500
       };
   
       // Make the post request to the ChatGPT API
-      this.generateTextService.postStory(body).subscribe((res) => {
+      this.generateTextService.postgenText(body).subscribe((res) => {
         console.log(body);
         console.log(res);
         this.newText = res;
         this.isConversationReady = true;
         // this.newConversation = this.newText.choice[0].text;
-        // this.story = this.generatedStory;
+        // this.genText = this.generatedgenText;
       }, error => {
         this.isConversationReady = false;
       });
@@ -129,7 +128,7 @@ export class GenerateTextComponent {
       };
   
       // Make the post request to the ChatGPT API
-      this.generateTextService.postStory(body).subscribe((res) => {
+      this.generateTextService.postgenText(body).subscribe((res) => {
         console.log(body);
         console.log(res);      
         this.translatedConversation = res;
@@ -139,19 +138,19 @@ export class GenerateTextComponent {
     practiceVocab() {
       const body = {
         model: "text-davinci-003",
-        prompt: "Make another " + this.storyLevel + " " + this.storyStyle + "in only " + this.storyLength + " sentences, with only the following vocabulary: " + this.generatedText + ": in " + this.storyLanguage,
+        prompt: "Make another " + this.genTextLevel + " " + this.genTextStyle + "in only " + this.genTextLength + " sentences, with only the following vocabulary: " + this.generatedText + ": in " + this.genTextLanguage,
         temperature: 1,
         max_tokens: 500
       };
   
       // Make the post request to the ChatGPT API
-      this.generateTextService.postStory(body).subscribe((res) => {
+      this.generateTextService.postgenText(body).subscribe((res) => {
         console.log(body);
         console.log(res);
         this.newText = res;
         this.isConversationReady = true;
         // this.newConversation = this.newText.choice[0].text;
-        // this.story = this.generatedStory;
+        // this.genText = this.generatedgenText;
       }, error => {
         this.isConversationReady = false;
       });  
@@ -165,11 +164,11 @@ export class GenerateTextComponent {
   
     ngOnInit() {
       // Assume that the JSON object is stored in a variable called "jsonResponse"
-      this.storyLevel = "";
-      this.storyStyle = "";
-      this.storyTopic = "";
-      this.storyLanguage = "";
-      this.storyLength = 0;
+      this.genTextLevel = "";
+      this.genTextStyle = "";
+      this.genTextTopic = "";
+      this.genTextLanguage = "";
+      this.genTextLength = 0;
       this.translationLanguage = "English";
       
     }

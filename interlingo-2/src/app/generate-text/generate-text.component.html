@@ -1,11 +1,11 @@
 <div>
-  <form *ngIf="!isTranslationReady" #storyForm="ngForm" (ngSubmit)="makeRequest(storyForm)">
+  <form *ngIf="!isTranslationReady" #genTextForm="ngForm" (ngSubmit)="makeRequest(genTextForm)">
     <p>Type of text</p>
-    <input type="text" name="storyStyle" [(ngModel)]="storyStyle" placeholder="story">
+    <input type="text" name="genTextStyle" [(ngModel)]="genTextStyle" placeholder="story">
     <p>About what?</p>
-    <input type="text" name="storyTopic" [(ngModel)]="storyTopic" placeholder="topic">
-    <p>How many sentences?</p>
-    <input type="text" name="storyLength" [(ngModel)]="storyLength" placeholder="3">
+    <input type="text" name="genTextTopic" [(ngModel)]="genTextTopic" placeholder="topic">
+    <p>How many sentences long would you like the genText?</p>
+    <input type="text" name="genTextLength" [(ngModel)]="genTextLength" placeholder="3">
     <div>
     </div>
     <div class="extra-padding"></div>
