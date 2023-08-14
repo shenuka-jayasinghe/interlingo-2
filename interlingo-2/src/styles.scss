@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* If you want to change font for specific elements, you can do it like this */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+p {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #707070;
+  font-size: 20;
+}
+
+.gen-text-tab {
+    padding: 30px;
+    align-items: center;
+}
+
+.card .card-image .card-title {
+    color: #fff;
+    background: black;
+    margin: 2em;
+    height: 100%;
+}
+
+.card .card-image {
+    position: relative;
+    // margin: 2em;
+}
+
+.margin {
+    margin: 2em;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.empty-padding {
+    padding: 200px; /* Adjust the padding value as needed */
+  }
+
+.mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab {
+    // padding: 10px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-tree {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-tree-node {
+    display: flex;
+    align-items: center;
+  }
+  
+  .example-tree-invisible {
+    display: none;
+  }
+
+
+.toolbar-text {
+    font-size:medium;
+    place-items: center;
+}
+
+
+.custom-toolbar {
+    .mat-toolbar {
+        width: 100vw; /* Set the width to 100 viewport width */
+        margin: 0; /* Remove default margin */
+        position: fixed; /* Fixed positioning to span the entire width */
+        z-index: 2; /* Adjust the z-index as needed for your layout */
+      }
+  }
+

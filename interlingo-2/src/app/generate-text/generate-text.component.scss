@@ -1,0 +1,57 @@
+.waves-effect {
+    background: white;
+    font-weight: bold;
+    color: #636363;
+}
+
+.btn:hover, .btn-large:hover, .btn-small:hover {
+    background-color: #d4d4d4;
+    color: black;
+}
+
+.extra-padding{
+    padding: 10px;
+}
+
+.mat-progress-spinner{
+    size: 50px;
+    align-content: center;
+}
+
+// .container {
+//     position: relative;
+//     width: 200px;
+//     height: 200px;
+//   }
+
+  .new-text-card {
+    position: absolute;
+    top: 35px;
+    left: 40px;
+    width: relative;
+    // height: 100%;
+    background-color: white;
+    padding: 10px;
+    z-index: -1;
+    color: black;
+    margin: 2em;
+  }
+
+
+  .svg-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+  }
+
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .new-text-padding{
+    padding-bottom: 35%;
+  } 
+
+  
