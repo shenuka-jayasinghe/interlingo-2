@@ -5,6 +5,8 @@ import { GenerateTextService } from '../shared/generate-text.service';
 import { NgForm } from '@angular/forms';
 import { ToolBarComponent } from '../tool-bar/tool-bar.component';
 import { ToolbarService } from '../shared/toolbar.service';
+import { DeeplService } from '../shared/deepl.service';
+import { TranslateText } from '../shared/deepl.model';
 
 
 
@@ -24,6 +26,8 @@ export class GenerateTextComponent {
     genTextLanguage: string = "";
     translationLanguage: string = "";
     newText: any;
+    newTranslation: any;
+    translatedText: any;
     generatedText: any;
     translatedgenText: any;
     genTextLength: number = 0;
@@ -41,7 +45,7 @@ export class GenerateTextComponent {
     
   
   
-    constructor(public generateTextService: GenerateTextService, public toolbarService: ToolbarService) { 
+    constructor(public generateTextService: GenerateTextService, public toolbarService: ToolbarService, public deepLService: DeeplService) { 
   
      }
   
@@ -54,6 +58,8 @@ export class GenerateTextComponent {
         temperature: 1,
         max_tokens: 150
       };
+
+      
   
       // Make the post request to the ChatGPT API
       
@@ -67,7 +73,31 @@ export class GenerateTextComponent {
         console.log(this.generatedText);
         this.isTranslationReady = true;
         this.generateButtonPressed = false;
-        // this.genText = this.generatedgenText;
+
+        // Prepare ChatGPT's new text to send to DeepL
+
+        const deeplbody = {
+          // text: this.newText.choice[0].text,
+          // target_lang: this.toolbarService.selectedLanguage
+          text: 'text',
+          target_lang: 'DE'
+        }
+
+        this.deepLService.postDeepL(deeplbody).subscribe((res) => {
+          console.log(deeplbody);
+          console.log(res);
+          this.newTranslation = res;
+          this.translatedText = this.newTranslation.text;
+          console.log(this.translatedText);
+        },
+         error => {
+        this.isTranslationReady = false;
+        this.generateButtonPressed = false;
+      });
+
+        
+
+
       }, error => {
         this.isTranslationReady = false;
         this.generateButtonPressed = false;
