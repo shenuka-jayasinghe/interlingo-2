@@ -1,13 +1,10 @@
 export class GenText {
-    model: string;
-    prompt: string;
-    temperature: number;
-    max_tokens: number;
+    text: string;
+    language: string;
+
   
-    constructor(model: string, prompt: string, temperature: number, max_tokens: number) {
-      this.model = model;
-      this.prompt = prompt;
-      this.temperature = temperature;
-      this.max_tokens = max_tokens;
+    constructor(text: string, language: string) {
+      this.text = language;
+      this.language = language;
     }
 }

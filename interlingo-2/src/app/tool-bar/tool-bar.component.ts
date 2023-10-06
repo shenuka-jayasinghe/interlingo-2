@@ -9,7 +9,7 @@ import { ToolbarService } from '../shared/toolbar.service';
 export class ToolBarComponent {
 
   selectedLevel: string = 'A1';
-  selectedLanguage: string = 'POL';
+  selectedLanguage: string = 'PL';
 
 
   constructor(public toolbarService: ToolbarService) {}
@@ -22,17 +22,17 @@ export class ToolBarComponent {
 
   selectLanguage(language: string) {
     this.selectedLanguage = language; // Update the selectedLanguage property
-    this.toolbarService.selectedLanguage = language; // Update the service's selectedLanguage
+    this.toolbarService.selectedLanguage = this.getLanguageAbbreviation(language); // Update the service's selectedLanguage
   }
 
   getLanguageAbbreviation(language: string): string {
     switch (language) {
       case 'Polish':
-        return 'POL';
+        return 'PL';
       case 'Lithuanian':
-        return 'LIT';
+        return 'LT';
       case 'Spanish':
-        return 'ESP';
+        return 'ES';
       // Add more cases for other languages
       default:
         return language; // Default to full language name if abbreviation not defined

@@ -16,19 +16,15 @@ export class GenerateTextService {
 
   newText: any;
   selectedGenText: GenText;
-  readonly baseURL = 'https://api.openai.com/v1/completions';
+  readonly baseURL = 'http://localhost:8080/prompt';
   
   postgenText(gentext: GenText){
-    const headers= new HttpHeaders()
-  .set('content-type', 'application/json')
-  .set('Authorization', apiKey);
-    
-    return this.http.post(this.baseURL, gentext,  { 'headers': headers });
+    console.log(gentext.language)
+    return this.http.post(this.baseURL, gentext );
   }
 
 
-
   constructor(private http: HttpClient) {
-    this.selectedGenText = new GenText("text-davinci-003", "", 1, 640);
+    this.selectedGenText = new GenText("", "");
    }
 }

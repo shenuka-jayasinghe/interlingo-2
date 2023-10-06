@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ToolbarService {
 
   selectedLevel: string = 'A1';
-  selectedLanguage: string = 'Polish';
+  selectedLanguage: string = 'PL';
   // isTranslationReady = false;
 
   constructor() { 

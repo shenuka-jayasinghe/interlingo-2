@@ -49,10 +49,8 @@ export class GenerateTextComponent {
     makeRequest( form : NgForm ) {
       // Construct the request body
       const body = {
-        model: "text-davinci-003",
-        prompt: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + " in " + this.toolbarService.selectedLanguage + " language, and only of " + this.genTextLength + " sentences.",
-        temperature: 1,
-        max_tokens: 150
+        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + "of only " + this.genTextLength + " sentences.",
+        language: this.toolbarService.selectedLanguage
       };
   
       // Make the post request to the ChatGPT API
@@ -63,7 +61,6 @@ export class GenerateTextComponent {
         console.log(body);
         console.log(res);
         this.newText = res;
-        this.generatedText = this.newText.choices[0].text;
         console.log(this.generatedText);
         this.isTranslationReady = true;
         this.generateButtonPressed = false;
@@ -82,10 +79,8 @@ export class GenerateTextComponent {
     makeTranslation() {
       // Construct the request body
       const body = {
-        model: "text-davinci-003",
-        prompt: "Translate " + this.generatedText + " in to " + this.translationLanguage,
-        temperature: 1,
-        max_tokens: 500
+        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + "of only " + this.genTextLength + " sentences.",
+        language: this.toolbarService.selectedLanguage
       };
   
       // Make the post request to the ChatGPT API
@@ -99,12 +94,9 @@ export class GenerateTextComponent {
     makeConversation() {
       // Construct the request body
       const body = {
-        model: "text-davinci-003",
-        prompt: "Make a " + this.genTextLevel + " conversation about the following: " + this.generatedText + ": in " + this.genTextLanguage,
-        temperature: 1,
-        max_tokens: 500
+        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + "of only " + this.genTextLength + " sentences.",
+        language: this.toolbarService.selectedLanguage
       };
-  
       // Make the post request to the ChatGPT API
       this.generateTextService.postgenText(body).subscribe((res) => {
         console.log(body);
@@ -121,10 +113,8 @@ export class GenerateTextComponent {
     translateNewText() {
       // Construct the request body
       const body = {
-        model: "text-curie-001",
-        prompt: "Translate " + this.newText.choices[0].text + " in to " + this.translationLanguage,
-        temperature: 1,
-        max_tokens: 500
+        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + "of only " + this.genTextLength + " sentences.",
+        language: this.toolbarService.selectedLanguage
       };
   
       // Make the post request to the ChatGPT API
@@ -137,10 +127,8 @@ export class GenerateTextComponent {
   
     practiceVocab() {
       const body = {
-        model: "text-davinci-003",
-        prompt: "Make another " + this.genTextLevel + " " + this.genTextStyle + "in only " + this.genTextLength + " sentences, with only the following vocabulary: " + this.generatedText + ": in " + this.genTextLanguage,
-        temperature: 1,
-        max_tokens: 500
+        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + "of only " + this.genTextLength + " sentences.",
+        language: this.toolbarService.selectedLanguage
       };
   
       // Make the post request to the ChatGPT API
