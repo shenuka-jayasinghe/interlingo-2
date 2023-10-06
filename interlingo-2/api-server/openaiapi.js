@@ -3,7 +3,7 @@
 const fetch = require('node-fetch');
 
 // Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key
-const openAIapiKey = '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';
+const openAIapiKey = '';
 
 // Function to make the OpenAI API request
 async function fetchOpenAIResponse(prompt) {

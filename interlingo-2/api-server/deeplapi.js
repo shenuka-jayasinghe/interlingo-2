@@ -3,7 +3,7 @@
 const fetch = require('node-fetch');
 
 // Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key
-const deepLapiKey = '0e6ebf7a-42a1-fd29-d014-08b60b56ad58:fx';
+const deepLapiKey = ''
 
 // Function to make the OpenAI API request
 async function fetchDeepLResponse(generatedText, language) {
