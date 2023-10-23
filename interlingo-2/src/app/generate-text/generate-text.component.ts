@@ -49,7 +49,7 @@ export class GenerateTextComponent {
     makeRequest( form : NgForm ) {
       // Construct the request body
       const body = {
-        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + "of only " + this.genTextLength + " sentences.",
+        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + ". This " + this.genTextStyle + " should be exactly " + this.genTextLength + " sentences long.",
         language: this.toolbarService.selectedLanguage
       };
   

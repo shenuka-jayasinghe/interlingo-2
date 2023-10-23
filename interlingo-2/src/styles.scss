@@ -48,9 +48,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 200px; /* Adjust the padding value as needed */
   }
 
-.mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab {
-    // padding: 10px;
-}
 
 .example-spacer {
     flex: 1 1 auto;
@@ -85,4 +82,28 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         z-index: 2; /* Adjust the z-index as needed for your layout */
       }
   }
+
+  .typing-animation {
+    display: inline-block;
+    overflow: hidden;
+  
+    .letter {
+      opacity: 0;
+      display: inline-block;
+      transform-origin: 0 50%;
+      animation: typing 0.5s forwards;
+    }
+  
+    @keyframes typing {
+      from {
+        width: 0;
+        opacity: 1;
+      }
+      to {
+        width: auto;
+        opacity: 1;
+      }
+    }
+  }
+  
 
