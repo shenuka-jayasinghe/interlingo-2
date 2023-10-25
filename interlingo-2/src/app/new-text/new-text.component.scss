@@ -1,18 +1,26 @@
 .container {
     position: relative;
     width: 200px;
-    height: 200px;
+    // height: 200px;
+    height: 85vh;
   }
 
   .card {
-    position: absolute;
-    top: 35px;
-    left: 35px;
-    width: 85%;
-    height: 100px;
-    background-color: white;
-    padding: 10px;
-    z-index: 0;
+    // position: absolute;
+    // top: 35px;
+    // left: 35px;
+    // width: 85%;
+    // height: 100px;
+    // background-color: white;
+    // padding: 10px;
+    // z-index: 0;
+  }
+
+  .audio-player{
+    // position: absolute;
+    // top: 35px;
+    // left: 35px;
+    // width: 85%;
   }
 
   .svg-container {
@@ -28,5 +36,6 @@
   }
 
   .new-text-container{
-    padding: 30px;
+    // padding: 30px;
+    height: 85vh
   }

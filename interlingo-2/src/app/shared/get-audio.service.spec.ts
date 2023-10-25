@@ -1,17 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GenerateTextService } from './generate-text.service';
+import { GetAudioService } from './get-audio.service';
 
-describe('GenerateTextService', () => {
-  let service: GenerateTextService;
+describe('GetAudioService', () => {
+  let service: GetAudioService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GenerateTextService);
+    service = TestBed.inject(GetAudioService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
 });

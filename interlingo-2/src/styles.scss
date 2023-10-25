@@ -2,11 +2,12 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 
-html, body { height: 100%; }
+html, body { height: 85vh; }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 body {
   font-family: "Segoe UI", Arial, sans-serif;
+  
 }
 
 /* If you want to change font for specific elements, you can do it like this */
@@ -20,6 +21,10 @@ p {
   font-size: 20;
 }
 
+mat-tab-body{
+  padding-bottom: 75vh;
+}
+
 .gen-text-tab {
     padding: 30px;
     align-items: center;
@@ -29,7 +34,6 @@ p {
     color: #fff;
     background: black;
     margin: 2em;
-    height: 100%;
 }
 
 .card .card-image {
@@ -40,7 +44,7 @@ p {
 .margin {
     margin: 2em;
 }
-html, body { height: 100%; }
+html, body { height: 85vh }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
