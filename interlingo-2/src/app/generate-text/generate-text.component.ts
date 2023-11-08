@@ -5,6 +5,8 @@ import { GenerateTextService } from '../shared/generate-text.service';
 import { NgForm } from '@angular/forms';
 import { ToolBarComponent } from '../tool-bar/tool-bar.component';
 import { ToolbarService } from '../shared/toolbar.service';
+import { GetAudioService } from '../shared/get-audio.service';
+import { AudioPlayerComponent } from '../main-page/audio-player/audio-player.component';
 
 
 
@@ -12,36 +14,33 @@ import { ToolbarService } from '../shared/toolbar.service';
   selector: 'app-generate-text',
   templateUrl: './generate-text.component.html',
   styleUrls: ['./generate-text.component.scss'],
-  providers: [GenerateTextService]
+  providers: [GenerateTextService, GetAudioService]
 })
 export class GenerateTextComponent {
 
 
-
+    
     genTextLevel: string = "";
     genTextStyle: string = "";
     genTextTopic: string = "";
     genTextLanguage: string = "";
     translationLanguage: string = "";
-    newText: any;
+    apiResponse: any;
     generatedText: any;
     translatedgenText: any;
     genTextLength: number = 0;
     newConversation: string = "";
     translatedConversation: any;
     isConversationReady =  false;
-  
+    languageCode: any;
     isTranslationReady = false;
     generateButtonPressed = false;
-  
-    // Add an event handler for the "Generate" button
-    // onStartGenerating() {
-    //   this.generateButtonPressed = true;
-    // }
-    
+    audioURL = ""
   
   
-    constructor(public generateTextService: GenerateTextService, public toolbarService: ToolbarService) { 
+  
+  
+    constructor(public generateTextService: GenerateTextService, public toolbarService: ToolbarService, public getAudioService: GetAudioService) { 
   
      }
   
@@ -49,9 +48,10 @@ export class GenerateTextComponent {
     makeRequest( form : NgForm ) {
       // Construct the request body
       const body = {
-        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + ". This " + this.genTextStyle + " should be exactly " + this.genTextLength + " sentences long.",
+        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + "of exactly " + this.genTextLength + " sentences.",
         language: this.toolbarService.selectedLanguage
       };
+      
   
       // Make the post request to the ChatGPT API
       
@@ -60,21 +60,46 @@ export class GenerateTextComponent {
         
         console.log(body);
         console.log(res);
-        this.newText = res;
+        this.apiResponse = res;
         console.log(this.generatedText);
         this.isTranslationReady = true;
         this.generateButtonPressed = false;
-        // this.genText = this.generatedgenText;
+        this.getAudio()
+        // this.audioModel.text = 
       }, error => {
         this.isTranslationReady = false;
         this.generateButtonPressed = false;
       });
+
+      // get Audio from Google API
+            
+
     }
 
+
     genTextAgain(){
-      this.newText = false;
+      this.apiResponse = false;
       this.isTranslationReady = false;
     }
+
+    getAudio() {
+      const audioReq = {
+        text: this.apiResponse.translatedText,
+        languageCode: this.apiResponse.languageCode
+      };
+    
+        this.getAudioService.fetchAudioFile(audioReq).subscribe(audioBlob => {
+        // Create an Object URL from the audioBlob
+        this.audioURL = URL.createObjectURL(audioBlob);
+        // Now you have an Object URL that can be used to play the audio
+      });
+    }
+
+    playAudio() {
+      // Fetch and set the audioUrl when the audio is available
+      this.getAudio();
+    }
+  
   
     makeTranslation() {
       // Construct the request body
@@ -89,65 +114,13 @@ export class GenerateTextComponent {
         console.log(res);
         this.translatedgenText = res;
       });
+
+      // Make audio request to google TTS API
     }
   
-    makeConversation() {
-      // Construct the request body
-      const body = {
-        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + "of only " + this.genTextLength + " sentences.",
-        language: this.toolbarService.selectedLanguage
-      };
-      // Make the post request to the ChatGPT API
-      this.generateTextService.postgenText(body).subscribe((res) => {
-        console.log(body);
-        console.log(res);
-        this.newText = res;
-        this.isConversationReady = true;
-        // this.newConversation = this.newText.choice[0].text;
-        // this.genText = this.generatedgenText;
-      }, error => {
-        this.isConversationReady = false;
-      });
-    }
-  
-    translateNewText() {
-      // Construct the request body
-      const body = {
-        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + "of only " + this.genTextLength + " sentences.",
-        language: this.toolbarService.selectedLanguage
-      };
-  
-      // Make the post request to the ChatGPT API
-      this.generateTextService.postgenText(body).subscribe((res) => {
-        console.log(body);
-        console.log(res);      
-        this.translatedConversation = res;
-      });
-    }
-  
-    practiceVocab() {
-      const body = {
-        text: "Make a " + this.toolbarService.selectedLevel + " level " + this.genTextStyle + " about " + this.genTextTopic + "of only " + this.genTextLength + " sentences.",
-        language: this.toolbarService.selectedLanguage
-      };
-  
-      // Make the post request to the ChatGPT API
-      this.generateTextService.postgenText(body).subscribe((res) => {
-        console.log(body);
-        console.log(res);
-        this.newText = res;
-        this.isConversationReady = true;
-        // this.newConversation = this.newText.choice[0].text;
-        // this.genText = this.generatedgenText;
-      }, error => {
-        this.isConversationReady = false;
-      });  
+
       
-      
-      
-  
-    }
-  
+ 
     
   
     ngOnInit() {

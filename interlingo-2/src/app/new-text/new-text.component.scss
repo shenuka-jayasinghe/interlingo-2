@@ -1,19 +1,14 @@
 .container {
     position: relative;
     width: 200px;
-    height: 200px;
+    // height: 200px;
+    height: 85vh;
   }
 
-  .card {
-    position: absolute;
-    top: 35px;
-    left: 35px;
-    width: 85%;
-    height: 100px;
-    background-color: white;
-    padding: 10px;
-    z-index: 0;
+  .waves-effect[_ngcontent-ng-c1472317785] .another-one-btn{
+    font-size: 20px;
   }
+
 
   .svg-container {
     position: absolute;
@@ -28,5 +23,6 @@
   }
 
   .new-text-container{
-    padding: 30px;
+    // padding: 30px;
+    height: 85vh
   }

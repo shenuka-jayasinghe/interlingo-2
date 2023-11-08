@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ToolBarComponent } from './tool-bar/tool-bar.component';
 import { NewTextComponent } from './new-text/new-text.component';
+import { AudioPlayerComponent } from './main-page/audio-player/audio-player.component';
 
 
 
@@ -33,7 +34,8 @@ import { NewTextComponent } from './new-text/new-text.component';
     GenerateTextComponent,
     MainPageComponent,
     ToolBarComponent,
-    NewTextComponent
+    NewTextComponent,
+    AudioPlayerComponent
   ],
   imports: [
     BrowserModule,

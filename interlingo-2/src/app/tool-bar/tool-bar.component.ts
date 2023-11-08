@@ -33,6 +33,8 @@ export class ToolBarComponent {
         return 'LT';
       case 'Spanish':
         return 'ES';
+      case 'Swedish':
+        return 'SV'
       // Add more cases for other languages
       default:
         return language; // Default to full language name if abbreviation not defined
