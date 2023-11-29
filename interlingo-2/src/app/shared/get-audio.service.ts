@@ -21,7 +21,7 @@ export class GetAudioService {
     //   audioConfig: { audioEncoding: 'LINEAR16' },
     // };
 
-    return this.http.post('http://localhost:3000/text-to-speech', audioModel, { responseType: 'blob' });
+    return this.http.post('http://18.130.240.95:9090/text-to-speech', audioModel, { responseType: 'blob' });
   }
   
 }
