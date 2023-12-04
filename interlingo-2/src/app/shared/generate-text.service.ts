@@ -16,7 +16,7 @@ export class GenerateTextService {
 
   newText: any;
   selectedGenText: GenText;
-  readonly baseURL = 'http://18.130.240.95:8080/prompt';
+  readonly baseURL = 'https://interlingo-api.onrender.com/prompt';
   
   postgenText(gentext: GenText){
     console.log(gentext.language)
